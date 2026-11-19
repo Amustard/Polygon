@@ -1,0 +1,119 @@
+Degree
+Float
+Lbl M
+ClrHome
+Menu("POLYGON SOLVER","KNOW SIDES",1,"KNOW EXT ANGLE",2,"KNOW INT ANGLE",3,"KNOW INT SUM",4,"KNOW DIAGONALS",5,"QUIT",Q)
+Lbl 1
+Input "SIDES? ",N
+Goto S
+Lbl 2
+Input "EXT ANGLE? ",E
+If E≤0
+Goto X
+360/E→N
+Goto S
+Lbl 3
+Input "INT ANGLE? ",I
+If I≥180
+Goto X
+360/(180-I)→N
+Goto S
+Lbl 4
+Input "INT SUM? ",T
+T/180+2→N
+Goto S
+Lbl 5
+Input "DIAGONALS? ",D
+If D<0
+Goto X
+(3+√(9+8D))/2→N
+Lbl S
+If abs(N-round(N,0))<.01
+round(N,0)→N
+If N<3 or fPart(N)
+Goto X
+360/N→E
+180(N-2)/N→I
+180(N-2)→T
+N(N-3)/2→D
+"POLYGON"→Str1
+If N=3
+"TRIANGLE"→Str1
+If N=4
+"QUADRILATERAL"→Str1
+If N=5
+"PENTAGON"→Str1
+If N=6
+"HEXAGON"→Str1
+If N=7
+"HEPTAGON"→Str1
+If N=8
+"OCTAGON"→Str1
+If N=9
+"NONAGON"→Str1
+If N=10
+"DECAGON"→Str1
+If N=11
+"HENDECAGON"→Str1
+If N=12
+"DODECAGON"→Str1
+ClrHome
+Output(1,1,Str1)
+Output(2,1,"SIDES")
+Output(2,9,N)
+Output(3,1,"EXT ANG")
+Output(3,9,round(E,3))
+Output(4,1,"INT ANG")
+Output(4,9,round(I,3))
+Output(5,1,"INT SUM")
+Output(5,9,T)
+Output(6,1,"EXT SUM")
+Output(6,9,360)
+Output(7,1,"DIAGS")
+Output(7,9,D)
+Output(8,1,"ENTER=PICTURES")
+Pause
+Menu("DRAW PICTURE?","POLYGON",P,"W/ DIAGONALS",W,"MAIN MENU",M,"QUIT",Q)
+Lbl P
+0→G
+Goto Z
+Lbl W
+1→G
+Lbl Z
+FnOff
+PlotsOff
+AxesOff
+GridOff
+LabelOff
+⁻10→Xmin
+10→Xmax
+⁻10→Ymin
+10→Ymax
+ZSquare
+ClrDraw
+7→R
+270-180/N→A
+For(K,1,N)
+Line(Rcos(A+360(K-1)/N),Rsin(A+360(K-1)/N)-.5,Rcos(A+360K/N),Rsin(A+360K/N)-.5)
+End
+If G and N≤25
+Then
+For(J,0,N-3)
+For(K,J+2,N-1-(J=0))
+Line(Rcos(A+360J/N),Rsin(A+360J/N)-.5,Rcos(A+360K/N),Rsin(A+360K/N)-.5)
+End
+End
+End
+Text(0,1,"N=",N,"  EXT=",round(E,2))
+Text(57,1,"INT=",round(I,2),"  DIAG=",D)
+If G and N>25
+Text(7,1,"TOO MANY DIAGS")
+Pause
+Goto M
+Lbl X
+ClrHome
+Disp "NOT A REGULAR","POLYGON!","SIDES MUST BE A","WHOLE NUMBER","3 OR MORE."
+Pause
+Goto M
+Lbl Q
+ClrHome
