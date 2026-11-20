@@ -1,0 +1,45 @@
+Lbl M
+ClrHome
+Menu("INT VS EXT ANGLE","INT=K*EXT",1,"EXT=K*INT",2,"INT=EXT+D",3,"QUIT",Q)
+Lbl 1
+ClrHome
+Disp "INTERIOR IS K","TIMES EXTERIOR"
+Input "K? ",K
+If K≤0
+Goto X
+180/(K+1)→E
+Goto S
+Lbl 2
+ClrHome
+Disp "EXTERIOR IS K","TIMES INTERIOR"
+Input "K? ",K
+If K≤0
+Goto X
+180K/(K+1)→E
+Goto S
+Lbl 3
+ClrHome
+Disp "INTERIOR IS D","DEGREES MORE","THAN EXTERIOR"
+Input "D? ",D
+If abs(D)≥180
+Goto X
+(180-D)/2→E
+Lbl S
+360/E→N
+If abs(N-round(N,0))<.0001
+round(N,0)→N
+If N<3 or fPart(N)
+Goto X
+360/N→E
+180-E→I
+ClrHome
+Disp "SIDES:",N,"EACH INT ANGLE:",I,"EACH EXT ANGLE:",E
+Pause
+Goto M
+Lbl X
+ClrHome
+Disp "NOT A REGULAR","POLYGON. SIDES","WOULD NOT BE A","WHOLE NUMBER 3+."
+Pause
+Goto M
+Lbl Q
+ClrHome

@@ -80,3 +80,28 @@ Examples: 3 → 60, 4 → 90, 5 → 108, 6 → 120, 8 → 135, 7 → 128.5714286
 Send `INTANGLE.8xp` with TI Connect CE, or create a program named `INTANGLE`
 and type in `INTANGLE.txt`. Rebuild with
 `python3 make_8xp.py INTANGLE.txt INTANGLE.8xp`.
+
+---
+
+# ANGRATIO — Sides from How the Interior and Exterior Angles Compare
+
+Solves word problems like *"How many sides does a regular polygon have if
+each interior angle is 8 times its adjacent exterior angle?"* (answer: 18).
+
+It uses the fact that an interior angle and its adjacent exterior angle add
+to 180°, so it can find the exterior angle E, then n = 360 / E.
+
+| Menu choice | Problem says | Exterior angle E |
+|---|---|---|
+| INT=K*EXT | interior is K times the exterior | 180 / (K + 1) |
+| EXT=K*INT | exterior is K times the interior | 180K / (K + 1) |
+| INT=EXT+D | interior is D degrees more than the exterior | (180 − D) / 2 |
+
+It shows the number of sides, each interior angle and each exterior angle.
+K can be a fraction (type `3/2`), and D can be negative if the interior is
+*less* than the exterior. If the answer isn't a whole number of sides ≥ 3,
+it says it's not a regular polygon.
+
+Send `ANGRATIO.8xp` with TI Connect CE, or create a program named `ANGRATIO`
+and type in `ANGRATIO.txt`. Rebuild with
+`python3 make_8xp.py ANGRATIO.txt ANGRATIO.8xp`.
