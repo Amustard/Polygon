@@ -1,8 +1,10 @@
-"""Tokenize POLYGON.txt into a TI-83 Plus / TI-84 Plus program file (POLYGON.8xp).
+"""Tokenize a program listing (e.g. POLYGON.txt) into a TI-83 Plus / TI-84 Plus .8xp file.
 
 Only the tokens this program uses are in the table.
 Usage: python3 make_8xp.py [POLYGON.txt] [POLYGON.8xp]
+The on-calculator program name is taken from the output file name.
 """
+import os
 import sys
 
 # Multi-character tokens. A trailing space is part of the token where the
@@ -69,12 +71,12 @@ def tokenize_line(line, lineno):
     return bytes(out)
 
 
-def build_8xp(name, tokens):
+def build_8xp(name, tokens, comment):
     data = len(tokens).to_bytes(2, "little") + tokens
     entry = (b"\x0D\x00" + len(data).to_bytes(2, "little") + b"\x05"
              + name.encode().ljust(8, b"\0") + b"\x00\x00"
              + len(data).to_bytes(2, "little") + data)
-    comment = b"Regular polygon solver".ljust(42, b"\0")
+    comment = comment.encode()[:42].ljust(42, b"\0")
     header = b"**TI83F*\x1A\x0A\x00" + comment + len(entry).to_bytes(2, "little")
     return header + entry + (sum(entry) & 0xFFFF).to_bytes(2, "little")
 
@@ -84,7 +86,8 @@ def main():
     dst = sys.argv[2] if len(sys.argv) > 2 else "POLYGON.8xp"
     lines = open(src, encoding="utf-8").read().rstrip("\n").split("\n")
     tokens = b"\x3F".join(tokenize_line(l, n + 1) for n, l in enumerate(lines))
-    open(dst, "wb").write(build_8xp("POLYGON", tokens))
+    name = os.path.splitext(os.path.basename(dst))[0].upper()[:8]
+    open(dst, "wb").write(build_8xp(name, tokens, f"{name} program"))
     print(f"wrote {dst}: {len(lines)} lines, {len(tokens)} token bytes")
 
 

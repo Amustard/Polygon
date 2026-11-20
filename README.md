@@ -48,3 +48,22 @@ line of `POLYGON.txt`. Commands come from menus, not by spelling them out:
 Note: the program switches the calculator to Degree mode.
 
 `make_8xp.py` rebuilds `POLYGON.8xp` from `POLYGON.txt`.
+
+---
+
+# DIAGS — Sides ↔ Diagonals for the TI-84 Plus
+
+A smaller program that does just one thing: turns a number of sides into a
+number of diagonals, or the other way around.
+
+| Menu choice | You type | It uses |
+|---|---|---|
+| SIDES TO DIAGS | number of sides n | D = n(n − 3) / 2 |
+| DIAGS TO SIDES | number of diagonals D | n = (3 + √(9 + 8D)) / 2 |
+
+Examples: 6 sides → 9 diagonals; 35 diagonals → 10 sides. If no polygon has
+exactly that many diagonals (for example, 7), it says so.
+
+Install it like POLYGON: send `DIAGS.8xp` with TI Connect CE, or create a
+program named `DIAGS` and type in `DIAGS.txt` using the key table above.
+Rebuild with `python3 make_8xp.py DIAGS.txt DIAGS.8xp`.

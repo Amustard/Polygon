@@ -1,0 +1,35 @@
+Lbl M
+ClrHome
+Menu("SIDES/DIAGONALS","SIDES TO DIAGS",1,"DIAGS TO SIDES",2,"QUIT",Q)
+Lbl 1
+ClrHome
+Input "SIDES? ",N
+If N<3 or fPart(N)
+Goto X
+N(N-3)/2→D
+Goto R
+Lbl 2
+ClrHome
+Input "DIAGONALS? ",D
+If D<0 or fPart(D)
+Goto Y
+(3+√(9+8D))/2→N
+If fPart(N)
+Goto Y
+Lbl R
+ClrHome
+Disp "SIDES:",N,"DIAGONALS:",D,"","D=N(N-3)/2"
+Pause
+Goto M
+Lbl X
+ClrHome
+Disp "SIDES MUST BE A","WHOLE NUMBER","3 OR MORE."
+Pause
+Goto M
+Lbl Y
+ClrHome
+Disp "NO POLYGON HAS","EXACTLY THAT","MANY DIAGONALS."
+Pause
+Goto M
+Lbl Q
+ClrHome
