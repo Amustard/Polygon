@@ -17,7 +17,7 @@ WORDS = {
     "PlotsOff ": b"\xEA", "FnOff ": b"\x97", "ClrDraw": b"\x85",
     "ZSquare": b"\x8B", "Text(": b"\x93", "Line(": b"\x9C",
     "round(": b"\x12", "abs(": b"\xB2", "fPart(": b"\xBA", "√(": b"\xBC",
-    "sin(": b"\xC2", "cos(": b"\xC4", " or ": b"\x3C", " and ": b"\x40",
+    "sin(": b"\xC2", "cos(": b"\xC4", "tan(": b"\xC6", "Else": b"\xD0", " or ": b"\x3C", " and ": b"\x40",
     "AxesOff": b"\x7E\x09", "GridOff": b"\x7E\x0B", "LabelOff": b"\x7E\x0D",
     "Xmin": b"\x63\x0A", "Xmax": b"\x63\x0B", "Ymin": b"\x63\x0C",
     "Ymax": b"\x63\x0D", "Str1": b"\xAA\x00",

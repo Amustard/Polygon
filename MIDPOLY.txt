@@ -1,0 +1,106 @@
+Degree
+Float
+Lbl M
+ClrHome
+Input "SIDES? ",N
+If N<3 or fPart(N)
+Goto X
+cos(180/N)→C
+sin(180/N)→Z
+tan(180/N)→T
+Menu("WHAT DO YOU KNOW","SIDE LENGTH",1,"SHORT DIAGONAL",2,"LONG DIAGONAL",3,"PERIMETER",4,"RADIUS",5,"APOTHEM",6,"AREA",7)
+Lbl 1
+Input "SIDE? ",S
+Goto R
+Lbl 2
+If N=3
+Goto Y
+Input "SHORT DIAG? ",D
+D/(2C)→S
+Goto R
+Lbl 3
+If fPart(N/2)
+Goto Y
+Input "LONG DIAG? ",D
+DZ→S
+Goto R
+Lbl 4
+Input "PERIMETER? ",P
+P/N→S
+Goto R
+Lbl 5
+Input "RADIUS? ",R
+2RZ→S
+Goto R
+Lbl 6
+Input "APOTHEM? ",A
+2AT→S
+Goto R
+Lbl 7
+Input "AREA? ",B
+If B≤0
+Goto E
+√(4BT/N)→S
+Lbl R
+If S≤0
+Goto E
+NS→P
+S/(2Z)→R
+S/(2T)→A
+NSA/2→B
+2SC→D
+SC→U
+NU→V
+BCC→W
+ClrHome
+Output(1,1,"ORIGINAL")
+Output(1,10,"N=")
+Output(1,12,N)
+Output(2,1,"SIDE")
+Output(2,9,round(S,3))
+Output(3,1,"PERIM")
+Output(3,9,round(P,3))
+Output(4,1,"SHORTDG")
+If N=3
+Then
+Output(4,9,"NONE")
+Else
+Output(4,9,round(D,3))
+End
+Output(5,1,"RADIUS")
+Output(5,9,round(R,3))
+Output(6,1,"APOTHEM")
+Output(6,9,round(A,3))
+Output(7,1,"AREA")
+Output(7,9,round(B,3))
+Output(8,1,"ENTER=MIDPOINTS")
+Pause
+ClrHome
+Output(1,1,"MIDPOINT POLYGON")
+Output(2,1,"(JOIN MIDPOINTS)")
+Output(4,1,"SIDE")
+Output(4,9,round(U,3))
+Output(5,1,"PERIM")
+Output(5,9,round(V,3))
+Output(6,1,"AREA")
+Output(6,9,round(W,3))
+Output(8,1,"ENTER=CONTINUE")
+Pause
+Menu("ANOTHER ONE?","YES",M,"NO",Q)
+Lbl X
+ClrHome
+Disp "SIDES MUST BE A","WHOLE NUMBER","3 OR MORE."
+Pause
+Goto M
+Lbl Y
+ClrHome
+Disp "THAT DIAGONAL","IS NOT POSSIBLE","FOR THIS","POLYGON."
+Pause
+Goto M
+Lbl E
+ClrHome
+Disp "LENGTH MUST BE","MORE THAN 0."
+Pause
+Goto M
+Lbl Q
+ClrHome

@@ -105,3 +105,38 @@ it says it's not a regular polygon.
 Send `ANGRATIO.8xp` with TI Connect CE, or create a program named `ANGRATIO`
 and type in `ANGRATIO.txt`. Rebuild with
 `python3 make_8xp.py ANGRATIO.txt ANGRATIO.8xp`.
+
+---
+
+# MIDPOLY — Lengths, Area and the Midpoint Polygon
+
+Solves problems like *"The short diagonal of a regular hexagon is 10. Find the
+perimeter of the hexagon formed by joining the consecutive midpoints of the
+original hexagon."* (answer: 30).
+
+1. Type the number of sides.
+2. Pick what you know: side length, short diagonal, long diagonal (even
+   number of sides only), perimeter, radius, apothem or area.
+3. Screen 1 shows the original polygon: side, perimeter, short diagonal,
+   radius, apothem and area.
+4. Press ENTER. Screen 2 shows the polygon made by joining the midpoints of
+   consecutive sides: its side, perimeter and area.
+
+Formulas used (n sides, side s, θ = 180°/n):
+
+| Thing | Formula |
+|---|---|
+| Short diagonal | 2s·cos θ |
+| Long diagonal (even n) | s / sin θ = 2 × radius |
+| Radius | s / (2 sin θ) |
+| Apothem | s / (2 tan θ) |
+| Area | n·s·apothem / 2 |
+| Midpoint polygon side | s·cos θ = half the short diagonal |
+| Midpoint polygon area | original area × cos² θ |
+
+Answers are decimals rounded to 3 places (e.g. 5.774 for 10/√3).
+
+Send `MIDPOLY.8xp` with TI Connect CE, or create a program named `MIDPOLY`
+and type in `MIDPOLY.txt`. `sin(`, `cos(`, `tan(` are the SIN, COS, TAN keys;
+`Else` is in `PRGM` → CTL. Rebuild with
+`python3 make_8xp.py MIDPOLY.txt MIDPOLY.8xp`.
