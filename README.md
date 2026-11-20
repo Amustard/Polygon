@@ -67,3 +67,16 @@ exactly that many diagonals (for example, 7), it says so.
 Install it like POLYGON: send `DIAGS.8xp` with TI Connect CE, or create a
 program named `DIAGS` and type in `DIAGS.txt` using the key table above.
 Rebuild with `python3 make_8xp.py DIAGS.txt DIAGS.8xp`.
+
+---
+
+# INTANGLE — Interior Angle of a Regular Polygon
+
+Type the number of sides n and it shows how many degrees are in **each**
+interior angle, using I = 180(n − 2) / n.
+
+Examples: 3 → 60, 4 → 90, 5 → 108, 6 → 120, 8 → 135, 7 → 128.5714286.
+
+Send `INTANGLE.8xp` with TI Connect CE, or create a program named `INTANGLE`
+and type in `INTANGLE.txt`. Rebuild with
+`python3 make_8xp.py INTANGLE.txt INTANGLE.8xp`.

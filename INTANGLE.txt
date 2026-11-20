@@ -1,0 +1,17 @@
+Lbl M
+ClrHome
+Input "SIDES? ",N
+If N<3 or fPart(N)
+Goto X
+180(N-2)/N→I
+ClrHome
+Disp "SIDES:",N,"EACH INT ANGLE:",I,"DEGREES","","I=180(N-2)/N"
+Pause
+Menu("AGAIN?","YES",M,"NO",Q)
+Lbl X
+ClrHome
+Disp "SIDES MUST BE A","WHOLE NUMBER","3 OR MORE."
+Pause
+Goto M
+Lbl Q
+ClrHome
